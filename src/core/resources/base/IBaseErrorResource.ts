@@ -1,3 +1,4 @@
 export interface IBaseErrorResource {
-  error: string;
+  message: string;
+  errorCode: string;
 }

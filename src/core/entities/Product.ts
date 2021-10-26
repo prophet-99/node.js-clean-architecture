@@ -12,9 +12,9 @@ class Product {
     return 500;
   }
 
-  // public getDenomination(): string {
-  //   return `${this.name} - ${this.code}`;
-  // }
+  public getDenomination(): string {
+    return `${this.name} - ${this.code}`;
+  }
 }
 
 export default Product;

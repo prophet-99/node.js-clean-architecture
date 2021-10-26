@@ -1,8 +1,8 @@
-import { IProductResource } from '../resources/product/IProductResource';
-import { IProductSelectResource } from '../resources/product/IProductSelectResource';
+import Product from '../entities/Product';
+import ProductSelectDTO from '../dtos/product/ProductSelectDTO';
 
 export interface IProductRepository {
-  findAll: () => Promise<IProductResource[]>;
-  finAllForSelect: () => Promise<IProductSelectResource[]>;
-  save: () => Promise<IProductResource>;
+  findAll: () => Promise<Product[]>;
+  finAllForSelect: () => Promise<ProductSelectDTO[]>;
+  save: () => Promise<Product>;
 }

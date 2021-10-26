@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc && npm run start",
-    "dev": "tsc-watch --onSuccess \"babel-node dist/server.js\"",
+    "start:dev": "tsc-watch --onSuccess \"babel-node dist/server.js\"",
     "install-prod": "npm i --only=prod"
   },
   "keywords": [],
