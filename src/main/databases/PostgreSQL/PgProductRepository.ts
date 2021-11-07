@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 
 import PgConnection from './connection/PgConnection';
+import { IPaginationRequest } from '../../../controllers/product/requests/IPaginationRequest';
 import { IProductRepository } from '../../../core/repositories/IProductRepository';
 import Product from '../../../core/entities/Product';
 import ProductSelectDTO from '../../../core/dtos/product/ProductSelectDTO';
@@ -28,6 +29,21 @@ class PgProductRepository implements IProductRepository {
         errorCode: `${err.code} | ${getEnumKeyByValue(err.code, EnumPostgresErrorCode)}`,
       });
     }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  public findAllWithPagination(paginationRequest: IPaginationRequest): Promise<Product[]> {
+    const { currentPage } = paginationRequest;
+    return new Promise((resolve) => resolve(
+      [{
+        code: 'AAAA',
+        createdAt: new Date(),
+        description: 'description',
+        name: `New Leche ${currentPage}`,
+        quantity: 50,
+        getDenomination: () => '',
+      }],
+    ));
   }
 
   // eslint-disable-next-line class-methods-use-this

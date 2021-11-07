@@ -6,6 +6,7 @@ import InversifyTypes from '../../main/config/InversifyTypes';
 import { IBaseUseCase } from '../../core/useCases/IBaseUseCase';
 import Product from '../../core/entities/Product';
 import BaseErrorResource from '../../core/resources/base/BaseErrorResource';
+import { IPaginationRequest } from './requests/IPaginationRequest';
 import { IProductsResponse } from './responses/IProductsResponse';
 import { IBaseErrorResponse } from '../IBaseErrorResponse';
 import EnumHttpStatusCode from '../../helpers/EnumHttpStatusCode';
@@ -13,7 +14,12 @@ import EnumHttpStatusCode from '../../helpers/EnumHttpStatusCode';
 const getAllProducts = async (req: Request, res: Response) => {
   const findAllUseCase = injectionContainer.get<IBaseUseCase>(InversifyTypes.PRODUCT_FIND_ALL);
   try {
-    const products = await findAllUseCase.execute() as Product[];
+    // FAKE REQUEST FOR EXAMPLE WITH PARAMS (CASE: PAGINATION)
+    const fakeRequest: IPaginationRequest = {
+      currentPage: 1,
+      find: '',
+    };
+    const products = await findAllUseCase.execute(fakeRequest) as Product[];
     const response: IProductsResponse = {
       sucess: true,
       products,

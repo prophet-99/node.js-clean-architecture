@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export interface IBaseUseCase {
-  execute: () => Promise<Object>;
+  execute: (params?: any) => Promise<Object>;
 }
